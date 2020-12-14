@@ -44,21 +44,21 @@ function setup() {
   var message = "This is a message";
  console.log(message)
   
-  trex = createSprite(50,height -40,20,50);
+  trex = createSprite(100,height -40,20,50);
   trex.addAnimation("running", trex_running);
   trex.addAnimation("collided", trex_collided);
   
 
   trex.scale = 0.5;
   
-  ground = createSprite(width/2,height-20,width,20);
+  ground = createSprite(camera.position.x,windowHeight-10);
   ground.addImage("ground",groundImage);
-  ground.x = ground.width /2;
   
-  gameOver = createSprite(width/2, height/2 -50);
+  
+  gameOver = createSprite(camera.position.x+100,camera.position.y+400);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(width/2,height/2);
+  restart = createSprite(camera.position.x+100,camera.position.y+370);
   restart.addImage(restartImg);
   
  
@@ -86,19 +86,19 @@ function draw() {
   
   background(153,217,236);
   //displaying score
-  text("Score: "+ score, width-100,50);
+  text("Score: "+ score, camera.position.x+700,50);
   
   
   if(gameState === PLAY){
 
     
     camera.position.x = trex.x;
+    camera.position.y = windowHeight/2;
 
     gameOver.visible = false;
     restart.visible = false;
     
     ground.velocityX = -(4 + 3* score/100)
-    camera.position.x = displayWidth/2;
     //scoring
     score = score + Math.round(getFrameRate()/60);
     
@@ -107,7 +107,7 @@ function draw() {
     }
     
     if (ground.x < 0){
-      ground.x = ground.width/2;
+      ground.x = ground.width/4.2;
     }
     
     //jump when the space key is pressed
