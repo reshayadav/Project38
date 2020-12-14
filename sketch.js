@@ -107,7 +107,7 @@ function draw() {
     }
     
     if (ground.x < 0){
-      ground.x = ground.width/4.2;
+      ground.x = ground.width/2;
     }
     
     //jump when the space key is pressed
