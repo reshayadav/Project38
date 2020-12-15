@@ -111,8 +111,8 @@ function draw() {
     }
     
     //jump when the space key is pressed
-    if(keyDown("space")&& trex.y >= 100 || touches.length >0) {
-        trex.velocityY = -12;
+    if(keyDown("space")&& trex.y >= height-50 || touches.length >0) {
+        trex.velocityY = -10;
         jumpSound.play();
         touches = [];
     }
@@ -127,9 +127,7 @@ function draw() {
     spawnObstacles();
     
     if(obstaclesGroup.isTouching(trex)){
-        trex.velocityY = -12;
-        // trex.y = displayWidth-12;
-        jumpSound.play();
+       
         gameState = END;
         dieSound.play()
       
