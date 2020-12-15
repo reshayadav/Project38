@@ -51,7 +51,7 @@ function setup() {
 
   trex.scale = 0.5;
   
-  ground = createSprite(camera.position.x,windowHeight-10);
+  ground = createSprite(camera.position.x-200,windowHeight-10);
   ground.addImage("ground",groundImage);
   
   
@@ -93,7 +93,7 @@ function draw() {
 
     
     camera.position.x = trex.x;
-    camera.position.y = windowHeight/2;
+    camera.position.y = trex.y;
 
     gameOver.visible = false;
     restart.visible = false;
@@ -107,7 +107,7 @@ function draw() {
     }
     
     if (ground.x < 0){
-      ground.x = ground.width/3;
+      ground.x =camera.position.x-200;
     }
     
     //jump when the space key is pressed
